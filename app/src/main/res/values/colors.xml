@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="monza_700">#DD0329</color>
+    <color name="monza_900">#C10021</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="codGray_900">#121212</color>
+    <color name="black">#FF000000</color>
+    <color name="athensGray_50">#EDF0F3</color>
+    <color name="hintOfRed">#F5F2F2</color> //text input blanquito
+</resources>
