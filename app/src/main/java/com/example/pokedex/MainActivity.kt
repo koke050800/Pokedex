@@ -3,19 +3,17 @@ package com.example.pokedex
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import com.example.pokedex.ui.theme.PokedexTheme
-import java.lang.reflect.Modifier
+import com.example.pokedex.feature.login.ui.screens.LoginScreen
+import com.example.pokedex.feature.pokemon_list.ui.screens.PokemonListNew
+import com.example.pokedex.ui.theme.POKEDEXTheme
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            PokedexTheme {
-                LoginScreen()
+            POKEDEXTheme {
+                PokemonListNew()
             }
         }
     }
@@ -23,8 +21,12 @@ class MainActivity : ComponentActivity() {
 
 
 
-@Preview
-@Composable
-fun LoginScreen(){
 
-}
+
+
+
+
+
+
+
+

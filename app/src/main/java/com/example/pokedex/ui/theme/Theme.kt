@@ -2,43 +2,54 @@ package com.example.pokedex.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.darkColors
-import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
+import com.google.accompanist.systemuicontroller.SystemUiController
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
-private val DarkColorPalette = darkColors(
-    primary = Purple200,
-    primaryVariant = Purple700,
-    secondary = Teal200
-)
-
-private val LightColorPalette = lightColors(
-    primary = Purple500,
-    primaryVariant = Purple700,
-    secondary = Teal200
-
-    /* Other default colors to override
-    background = Color.White,
-    surface = Color.White,
-    onPrimary = Color.White,
-    onSecondary = Color.Black,
-    onBackground = Color.Black,
-    onSurface = Color.Black,
-    */
-)
-
+/**
+ * Obtiene el tema segun la configuracion del sistema
+ * @param darkTheme En caso de forzar los colores del tema
+ * @return El tema segun si es oscuro o claro
+ * @see DarkTheme
+ * @see LightTheme
+ */
 @Composable
-fun PokedexTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
-    val colors = if (darkTheme) {
-        DarkColorPalette
-    } else {
-        LightColorPalette
-    }
+fun getCurrentTheme(darkTheme: Boolean = isSystemInDarkTheme()) = if (darkTheme) DarkTheme else LightTheme
+
+/**
+ * Aplica el tema de GMAR a el contenido de este [Composable]
+ * @param statusBarColor Aplica este color al StatusBar al hacer la primera composicion
+ * @param content Contenido a aplicar el tema GMAR
+ * @see [SystemUiController]
+ * @see [MaterialTheme]
+ */
+@Composable
+fun POKEDEXTheme(
+    updateStatusBar: Boolean = true,
+    statusBarColor: Color = Color.Transparent,
+    content: @Composable (SystemUiController) -> Unit
+) {
+    val theme = getCurrentTheme()
 
     MaterialTheme(
-        colors = colors,
-        typography = Typography,
-        shapes = Shapes,
-        content = content
-    )
+        colors = theme.colors,
+        typography = Typography(theme),
+        shapes = Shapes
+    ){
+        val uiController = rememberSystemUiController()
+
+        if(updateStatusBar){
+            uiController.setStatusBarColor(
+                statusBarColor,
+                !isSystemInDarkTheme()
+            )
+        }
+
+        uiController.setNavigationBarColor(
+            theme.toolbar
+        )
+
+        content(uiController)
+    }
 }
