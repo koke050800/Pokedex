@@ -50,9 +50,9 @@ fun TextButtonPrincipal(
 }
 
 @Composable
-fun OutlinedTextButton(labelOfButton: String = "Button") {
+fun OutlinedTextButton(labelOfButton: String = "Button", onClick: () -> Unit) {
     OutlinedButton(
-        onClick = { /* Do something! */ },
+        onClick = { onClick() },
         modifier = Modifier
             .padding(top = 32.dp)
             .background(
@@ -159,7 +159,7 @@ fun RadioButtonSexView(){
 @Composable
 fun OutlinedTextButtonView(){
     POKEDEXTheme {
-        OutlinedTextButton()
+        //OutlinedTextButton()
     }
 }
 

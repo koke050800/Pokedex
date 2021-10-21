@@ -31,8 +31,8 @@ object DarkTheme : ComposableTheme {
     override val divider = Color(0xFF595959)
 
     override val colors = darkColors(
-        primary = primaryColor.s400,
-        primaryVariant = primaryColor.s600,
+        primary = primaryColor.s200,
+        primaryVariant = primaryColor.s500,
         onPrimary = Color.Black,
 
         secondary = secondaryColor.s500,

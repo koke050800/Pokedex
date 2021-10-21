@@ -1,7 +1,8 @@
 package com.example.pokedex.feature.register.ui.screens
 
-import android.content.res.Configuration
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -18,16 +19,26 @@ import com.example.pokedex.ui.components.RadioButtonSex
 import com.example.pokedex.ui.components.TextButtonPrincipal
 import com.example.pokedex.ui.theme.POKEDEXTheme
 
+class RegisterScreenActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            POKEDEXTheme {
+                RegisterScreen()
+            }
+        }
+    }
+}
 
 @Composable
 fun RegisterScreen() {
 
     Column(
         modifier = Modifier
+            .verticalScroll(rememberScrollState())
             .padding(all = 32.dp)
             .fillMaxWidth()
-            .fillMaxHeight()
-            .verticalScroll(rememberScrollState()),
+            .fillMaxHeight(),
         horizontalAlignment = Alignment.Start
     ) {
         Text(
@@ -80,7 +91,7 @@ fun RegisterScreen() {
 
 }
 
-@Preview(showBackground = true,uiMode = UI_MODE_NIGHT_YES)
+@Preview(showBackground = true)
 @Composable
 fun RegisterScreenView() {
     POKEDEXTheme {
