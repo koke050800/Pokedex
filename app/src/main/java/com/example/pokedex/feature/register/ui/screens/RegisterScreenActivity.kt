@@ -48,7 +48,10 @@ fun RegisterScreen() {
             textAlign = TextAlign.Start,
         )
         Spacer(modifier = Modifier.height(8.dp))
-        Row(Modifier.wrapContentWidth(Alignment.CenterHorizontally)) {
+        Row(
+            Modifier
+                .wrapContentWidth(Alignment.CenterHorizontally)
+        ) {
             LabelAndOutlinedTextField(
                 Modifier.weight(1f),
                 labelTop = "Nombre(s)",

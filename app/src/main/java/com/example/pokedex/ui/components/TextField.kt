@@ -24,11 +24,12 @@ fun SimpleOutlinedTextField(
     modifier: Modifier = Modifier
         .padding(top = 16.dp)
         .fillMaxWidth()
-        .fillMaxWidth()
         .background(
             color = MaterialTheme.colors.surface,
             shape = RoundedCornerShape(16.dp)
-        )
+        ),
+    readOnly: Boolean = false,
+    colorOfLabelHint: androidx.compose.ui.graphics.Color = getCurrentTheme().hintText
 ) {
     var valueInTextField by remember { mutableStateOf("") }
 
@@ -40,9 +41,10 @@ fun SimpleOutlinedTextField(
             Text(
                 labelHint,
                 style = style,
-                color = getCurrentTheme().hintText
+                color = colorOfLabelHint
             )
         },
+        readOnly = readOnly,
         modifier = modifier,
         singleLine = true,
         shape = RoundedCornerShape(16.dp),
@@ -55,36 +57,25 @@ fun LabelAndOutlinedTextField(
     modifier: Modifier = Modifier,
     labelTop: String = "Label",
     labelInfo: String = "...",
-    style: TextStyle = MaterialTheme.typography.body2
-
+    styleLabelTop: TextStyle = MaterialTheme.typography.body1,
+    styleLabelInfo: TextStyle = MaterialTheme.typography.body2,
+    colorLabelTop: androidx.compose.ui.graphics.Color = MaterialTheme.colors.primary,
+    colorLabelInfo: androidx.compose.ui.graphics.Color = getCurrentTheme().hintText,
+    readOnly: Boolean = false
 ) {
     Column(modifier = modifier.padding(top = 24.dp)) {
 
         Text(
             labelTop,
-            style = MaterialTheme.typography.body1,
-            color = MaterialTheme.colors.primary
+            style = styleLabelTop,
+            color = colorLabelTop
         )
-        SimpleOutlinedTextField(labelInfo, style = style)
+        SimpleOutlinedTextField(
+            labelInfo,
+            style = styleLabelInfo,
+            colorOfLabelHint = colorLabelInfo,
+            readOnly = readOnly
+        )
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun LabelAndOutlinedTextFieldView() {
-    POKEDEXTheme {
-        LabelAndOutlinedTextField(Modifier, "Nombre", "Nombresito", MaterialTheme.typography.body2)
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun SimpleOutlinedTextFieldView() {
-    POKEDEXTheme {
-        Column() {
-            SimpleOutlinedTextField()
-            SimpleOutlinedTextField()
-        }
-
-    }
-}

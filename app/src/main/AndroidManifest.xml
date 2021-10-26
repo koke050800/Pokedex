@@ -24,6 +24,11 @@
         <activity
             android:name=".feature.register.ui.screens.RegisterScreenActivity"
             android:theme="@style/Theme.Pokedex.NoActionBar" />
+
+        <activity
+            android:name=".feature.pokemon_list.ui.screens.PokemonInfoActivity"
+            android:theme="@style/Theme.Pokedex.NoActionBar" />
+
     </application>
 
 </manifest>

@@ -36,7 +36,7 @@ fun PokemonListNew(pokemonsListViewModel: PokemonsListViewModel = viewModel()) {
         }
 
         items(pokemonsListViewModel.pokemonsList) { pokemon ->
-            CardPokemon(pokemon = pokemon)
+            CardPokemon(pokemon = pokemon, pokemonsListViewModel)
         }
     }
 }

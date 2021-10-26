@@ -22,6 +22,12 @@ class PokemonsListViewModel:  ViewModel(){
         pokemonsList.add(pokemon)
     }
 
+    fun deletePokemon(pokemon: Pokemon) {
+        pokemonsList.removeAll {
+            pokemon.id == it.id
+        }
+    }
+
     /**
      * Agrega una lista inicial de pokemons al ViewModel
      * @return ArrayList de pokemones
@@ -30,32 +36,38 @@ class PokemonsListViewModel:  ViewModel(){
         Pokemon(
             name = "Pikachu",
             weight = 14.5f,
-            type = TypePokemon.Eléctrico
+            type = TypePokemon.Eléctrico,
+            id = "p1"
         ),
         Pokemon(
             name = "Charmander",
             weight = 13.25f,
-            type = TypePokemon.Fuego
+            type = TypePokemon.Fuego,
+            id = "p2"
         ),
         Pokemon(
             name = "Squirtle",
             weight = 16.35f,
-            type = TypePokemon.Agua
+            type = TypePokemon.Agua,
+            id = "p3"
         ),
         Pokemon(
             name = "Pikachu",
             weight = 14.5f,
-            type = TypePokemon.Eléctrico
+            type = TypePokemon.Eléctrico,
+            id = "p4"
         ),
         Pokemon(
             name = "Charmander",
             weight = 13.25f,
-            type = TypePokemon.Fuego
+            type = TypePokemon.Fuego,
+            id = "p5"
         ),
         Pokemon(
             name = "Squirtle",
             weight = 16.35f,
-            type = TypePokemon.Agua
+            type = TypePokemon.Agua,
+            id = "p6"
         )
 
     )
